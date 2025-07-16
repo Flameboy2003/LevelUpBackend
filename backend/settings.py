@@ -143,7 +143,7 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv("DATABASE_URL", "postgres://postgres:password@localhost:5432/mydb")
+        default=os.getenv("DATABASE_URL")
     )
 }
 
