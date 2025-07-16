@@ -21,6 +21,7 @@ djangorestframework==3.16.0
 dotenv==0.9.9
 filelock==3.18.0
 fsspec==2025.3.2
+gunicorn==23.0.0
 hdbscan==0.8.40
 huggingface-hub==0.32.2
 idna==3.10
