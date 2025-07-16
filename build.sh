@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
+# Exit on error
+set -o errexit
+
 # Install dependencies
 pip install -r requirements.txt
 
-# Apply migrations
+# Run migrations
 python manage.py migrate
 
-# Collect static files (optional but useful for admin and CSS)
+# Collect static files
 python manage.py collectstatic --noinput
