@@ -7,6 +7,7 @@ from .models import Poll, Vote
 from .serializers import PollSerializer, VoteSerializer
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def create_poll(request):
     serializer = PollSerializer(data=request.data)
     if serializer.is_valid():
