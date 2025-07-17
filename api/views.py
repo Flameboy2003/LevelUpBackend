@@ -23,6 +23,7 @@ def create_poll(request):
     return Response(serializer.errors, status=400)
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def list_polls(request):
     polls = Poll.objects.all().order_by('-created_at')
     serializer = PollSerializer(polls, many=True)
