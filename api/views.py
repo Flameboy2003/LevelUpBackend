@@ -1,10 +1,17 @@
 from django.shortcuts import render
-
-# Create your views here.
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
+from rest_framework.views import APIView
+
 from .models import Poll, Vote
 from .serializers import PollSerializer, VoteSerializer
+
+class YourView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        return Response({"message": "ok"})
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -21,7 +28,7 @@ def list_polls(request):
     serializer = PollSerializer(polls, many=True)
     return Response(serializer.data)
 
-@api_view(["POST"])
+@api_view(['POST'])
 def save_vote(request):
     email = request.data.get("email")
     poll_id = request.data.get("poll_id")
